@@ -14,26 +14,24 @@ let quartersNeeded = Number(0);
 let dimesNeeded = Number(0);
 let nickelsNeeded = Number(0);
 let penniesNeeded = Number(0);
+let remainingCents = amount
 
-if (amount >= 0.25) {
-        while (amount >= 0.25) {
-                quartersNeeded = quartersNeeded++;
-                amount = amount - 0.25;
+if (amount >= MIN && amount <= MAX) {
+        while (remainingCents >= 0.25) {
+                quartersNeeded = ++quartersNeeded;
+                remainingCents = remainingCents - quarterValue;
         }
-} else if (amount >= 0.10) {
-        while (amount >= 0.10) {
-                dimesNeeded = dimesNeeded++;
-                amount = amount - 0.10;
+        while (remainingCents >= 0.10) {
+                dimesNeeded = ++dimesNeeded;
+                remainingCents = remainingCents - dimeValue;
         }
-} else if (amount >= 0.05) {
-        while (amount >= 0.05) {
-                nickelsNeeded = nickelsNeeded++;
-                amount = amount - 0.05
+        while (remainingCents >= 0.05) {
+                nickelsNeeded = ++nickelsNeeded;
+                remainingCents = remainingCents - nickelValue;
         }
-} else {
-        while (amount >= 0.01) {
-                penniesNeeded = penniesNeeded++;
-                amount = amount - 0.01;
+        while (remainingCents > 0) {
+                penniesNeeded = ++penniesNeeded;
+                remainingCents = remainingCents - pennyValue;
         }
 }
 
@@ -42,12 +40,12 @@ let dimeOrDimes = (dimesNeeded == 1) ? "dime" : "dimes";
 let nickelOrNickels = (nickelsNeeded == 1) ? "nickel" : "nickels";
 let pennyOrPennies = (penniesNeeded == 1) ? "penny" : "pennies";
 
-let changeMessage = `${quartersNeeded} ${quarterOrQuarters}, ${dimesNeeded} dimes, ${nicklesNeeded} nickles, and ${penniesNeeded} pennies.`;
+let changeMessage = `\n${quartersNeeded} ${quarterOrQuarters}, ${dimesNeeded} ${dimeOrDimes}, ${nickelsNeeded} ${nickelOrNickels}, and ${penniesNeeded} ${pennyOrPennies}.`;
 
 if (Number.isNaN(amount)) {
     console.log("\nInvalid.");
 } else if (amount < MIN || amount > MAX) {
     console.log("\nInvalid.");
 } else {
-   console.log(\nchangeMessage);
+   console.log(changeMessage);
 };
