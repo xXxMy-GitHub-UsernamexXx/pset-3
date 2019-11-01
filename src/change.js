@@ -3,10 +3,10 @@ const readlineSync = require("readline-sync");
 const MIN = 0.01;
 const MAX = 0.99;
 
-const quarterValue = Number(0.25);
-const dimeValue = Number(0.10);
-const nickelValue = Number(0.05);
-const pennyValue = Number(0.01);
+const QUARTER_VALUE = Number(0.25);
+const DIME_VALUE = Number(0.10);
+const NICKEL_VALUE = Number(0.05);
+const PENNY_VALUE = Number(0.01);
 
 const amount = Number(readlineSync.question("\nEnter a dollar amount: "));
 
@@ -19,19 +19,19 @@ let remainingCents = amount;
 if (amount >= MIN && amount <= MAX) {
         while (remainingCents >= 0.25) {
                 quartersNeeded = ++quartersNeeded;
-                remainingCents = remainingCents - quarterValue;
+                remainingCents = remainingCents - QUARTER_VALUE;
         }
         while (remainingCents >= 0.10) {
                 dimesNeeded = ++dimesNeeded;
-                remainingCents = remainingCents - dimeValue;
+                remainingCents = remainingCents - DIME_VALUE;
         }
         while (remainingCents >= 0.05) {
                 nickelsNeeded = ++nickelsNeeded;
-                remainingCents = remainingCents - nickelValue;
+                remainingCents = remainingCents - NICKEL_VALUE;
         }
         while (remainingCents > 0) {
                 penniesNeeded = ++penniesNeeded;
-                remainingCents = remainingCents - pennyValue;
+                remainingCents = remainingCents - PENNY_VALUE;
         }
 };
 
