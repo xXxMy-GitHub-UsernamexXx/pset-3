@@ -24,4 +24,4 @@ const yearMessage = `\n${year} is ${leapStatus}a leap year.`;
 
 if (!((true == Number.isNaN(year)) || (year <= MIN || year > MAX))) {
         console.log(yearMessage);
-}
+};
