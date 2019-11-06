@@ -3,8 +3,9 @@ const readlineSync = require("readline-sync");
 const MIN = 0;
 const MAX = Number.MAX_SAFE_INTEGER;
 
-const year = Number(readlineSync.question("\nEnter a year: "));
+let year = Number(readlineSync.question("\nEnter a year: "));
 
+year = Math.round(year);
 let leapStatus = "";
 const yearMessage = `\n${year} is ${leapStatus}a leap year.`;
 
